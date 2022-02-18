@@ -10,6 +10,16 @@ services:
       - "8080:8080"
     networks:
       - fullstack
+  frontend:
+    build: ./frontend
+    container_name: "GuessingGame-React"
+    ports: 
+      - "3000:3000"
+    volumes:
+      - "/app/node_modules"
+      - "./frontend:/app"
+    networks:
+      - fullstack
 
 networks:
   fullstack:
