@@ -1,9 +1,9 @@
 package guess
 
 import (
-	"fmt"
 	"math/rand"
 	"strconv"
+	"time"
 
 	"github.com/gin-gonic/gin"
 )
@@ -28,15 +28,17 @@ func GuessNumber(c *gin.Context) {
 	status := true
 
 	if guessNumber == randomNumber {
+		rand.Seed(time.Now().UnixNano())
 		randomNumber = rand.Intn(max-min) + min
 	} else if guessNumber > randomNumber {
 		HTTPstatus = 202
 		status = false
-		message = fmt.Sprintf("%d is too high", guessNumber)
+		message = "Your guess is too high"
+
 	} else {
 		HTTPstatus = 202
 		status = false
-		message = fmt.Sprintf("%d is too low", guessNumber)
+		message = "Your guess is too low"
 	}
 
 	c.JSON(HTTPstatus, gin.H{
