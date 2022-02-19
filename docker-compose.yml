@@ -1,15 +1,6 @@
 version: "3.8"
 
 services:
-  backend:
-    build: ./backend
-    container_name: "GuessingGame-API"
-    environment:
-      SIGNATURE: "mySignature"
-    ports:
-      - "8080:8080"
-    networks:
-      - fullstack
   frontend:
     build: ./frontend
     container_name: "GuessingGame-React"
@@ -20,6 +11,17 @@ services:
       - "./frontend:/app"
     networks:
       - fullstack
+      
+  backend:
+    build: ./backend
+    container_name: "GuessingGame-API"
+    environment:
+      SIGNATURE: "mySignature"
+    ports:
+      - "8080:8080"
+    networks:
+      - fullstack
+  
 
 networks:
   fullstack:

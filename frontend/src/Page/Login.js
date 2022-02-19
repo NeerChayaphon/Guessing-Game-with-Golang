@@ -1,11 +1,14 @@
 import {useState} from 'react';
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { useFetchUser } from '../hooks/useFetchUser';
+
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
   let navigate = useNavigate();
+  const {refetch} = useFetchUser();
 
   const HandleSubmit = async () => {
     setError(null);
@@ -23,6 +26,7 @@ const Login = () => {
       setData(json);
       setError(null);
       localStorage.setItem('token', json.token);
+      refetch();
       navigate("/")
     } catch (err) {
       if (err.message == 'Unauthorized') {

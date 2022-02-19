@@ -1,9 +1,14 @@
-import React from 'react'
+import {useContext,useEffect} from 'react';
+import {UserContext} from '../context/userContext';
+import {useFetchUser} from '../hooks/useFetchUser';
+import useTokenCheck from '../hooks/useTokenCheck';
 
 const Home = () => {
-  return (
-    <div>Home</div>
-  )
-}
+  useTokenCheck();
+  useFetchUser();
 
-export default Home
+  const {playerName} = useContext(UserContext);
+  return <div>User {playerName}</div>;
+};
+
+export default Home;
