@@ -1,16 +1,18 @@
 
 import './App.css';
 
-import {BrowserRouter as Router,Routes,Route,Link } from 'react-router-dom'
+import {BrowserRouter as Router,Routes,Route } from 'react-router-dom'
 import Home from './Page/Home';
 import Login from './Page/Login';
 import ErrorPage from './Page/ErrorPage';
 import UserContextProvider from './context/userContext';
+import Navbar from './components/Navbar';
 
 function App() {
   return (
     <UserContextProvider> 
      <Router>
+     <Navbar/>
        <Routes>
           <Route path='/' element={<Home />}/>
           <Route path='/login' element={<Login />}/>

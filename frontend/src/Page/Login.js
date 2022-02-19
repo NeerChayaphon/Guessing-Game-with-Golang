@@ -10,7 +10,8 @@ const Login = () => {
   let navigate = useNavigate();
   const {refetch} = useFetchUser();
 
-  const HandleSubmit = async () => {
+  const HandleSubmit = async (e) => {
+    e.preventDefault();
     setError(null);
     const url = 'http://localhost:8080/login';
     const requestOptions = {
@@ -39,6 +40,7 @@ const Login = () => {
 
   return (
     <div className='min-h-screen bg-sky-500 flex justify-center items-center '>
+      <form onSubmit={HandleSubmit}>
       <div className='py-12 px-12 bg-white rounded-2xl shadow-xl z-20'>
         <div>
           <h1 className='text-3xl font-bold text-center mb-4 cursor-pointer'>
@@ -71,7 +73,7 @@ const Login = () => {
             <button
               type='submit'
               className='py-2 w-36 text-xl text-white bg-sky-500 rounded-2xl hover:bg-sky-700'
-              onClick={HandleSubmit}
+              
             >
               Sign in
             </button>
@@ -93,6 +95,7 @@ const Login = () => {
           )}
         </div>
       </div>
+      </form>
     </div>
   );
 };
