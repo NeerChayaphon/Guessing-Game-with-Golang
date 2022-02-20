@@ -7,6 +7,7 @@ import Login from './Page/Login';
 import ErrorPage from './Page/ErrorPage';
 import UserContextProvider from './context/userContext';
 import Navbar from './components/Navbar';
+import WinModal from './components/WinModal';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path='/' element={<Home />}/>
           <Route path='/login' element={<Login />}/>
           <Route path='*' element={<ErrorPage />}/>
+          <Route path='/modal' element={<WinModal />}/>
        </Routes>
      </Router>
      </UserContextProvider>
