@@ -1,9 +1,15 @@
 # Guessing Game
 
 ## How to run the service
+```
 1. $ cd GuessingGame
+```
+```
 2. $ docker compose build
+```
+```
 3. $ docker compose up -d
+```
 
 ## How to stop the service
 1. $ docker compose down
