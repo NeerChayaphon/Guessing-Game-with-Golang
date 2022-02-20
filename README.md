@@ -45,6 +45,6 @@ docker compose down
 ** (2,3,4) Route need to have JWT token as a header field name Authorization, for example Authorization : Bearer ..Your token..
 
 ## User for testing
-### username : testuser
-### password : testuser
+ - username : testuser
+ - password : testuser
 
