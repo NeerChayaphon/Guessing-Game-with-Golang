@@ -1,19 +1,19 @@
 # Guessing Game
 
 ## How to run the service
-Step 1 Clone the project
+Step 1: Clone the project
 ```
 $ git clone https://github.com/NeerChayaphon/GuessingGame.git
 ```
-Step 2 Navigate in to directory
+Step 2: Navigate in to directory
 ```
 $ cd GuessingGame
 ```
-Step 3 Build the service
+Step 3: Build the service
 ```
 $ docker compose build
 ```
-Step 4 Run the service
+Step 4: Run the service
 ```
 $ docker compose up -d
 ```
