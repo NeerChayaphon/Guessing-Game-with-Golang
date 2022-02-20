@@ -8,7 +8,7 @@
 ## How to stop the service
 1. $ docker compose down
 
-## Guessing game is running in the locahost
+## Guessing game is running in the localhost
 1. Frontend: http://localhost:3000
 2. Backend: http://localhost:8080
 
