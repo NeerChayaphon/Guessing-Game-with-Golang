@@ -1,6 +1,7 @@
 package main
 
 import (
+	"net/http"
 	"os"
 
 	"github.com/Guessing-Game-with-Golang/auth"
@@ -23,6 +24,9 @@ func main() {
 	}
 
 	r.Use(cors.New(config))
+	r.GET("/", func(c *gin.Context) {
+		c.JSON(http.StatusOK, gin.H{"message": "API is running"})
+	})
 
 	r.POST("/login", auth.AccessToken(os.Getenv("SIGNATURE")))
 
