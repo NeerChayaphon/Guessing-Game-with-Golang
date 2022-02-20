@@ -3,24 +3,24 @@
 ## How to run the service
 Step 1: Clone the project
 ```
-$ git clone https://github.com/NeerChayaphon/GuessingGame.git
+git clone https://github.com/NeerChayaphon/GuessingGame.git
 ```
 Step 2: Navigate in to directory
 ```
-$ cd GuessingGame
+cd GuessingGame
 ```
 Step 3: Build the service
 ```
-$ docker compose build
+docker compose build
 ```
 Step 4: Run the service
 ```
-$ docker compose up -d
+docker compose up -d
 ```
 
 ## How to stop the service
 ```
-$ docker compose down
+docker compose down
 ```
 
 ## Guessing game is running in the localhost
