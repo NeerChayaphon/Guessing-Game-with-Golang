@@ -1,16 +1,16 @@
 import {useState} from 'react';
 import { useNavigate } from 'react-router-dom';
-import WinModal from '../components/WinModal';
 import { useFetchUser } from '../hooks/useFetchUser';
 
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [data, setData] = useState(null);
-  const [error, setError] = useState(null);
+  const [data, setData] = useState(null); // json response
+  const [error, setError] = useState(null); // error response
   let navigate = useNavigate();
-  const {refetch} = useFetchUser();
+  const {refetch} = useFetchUser(); // fetch the user data from token
 
+  // Function for login
   const HandleSubmit = async (e) => {
     e.preventDefault();
     setError(null);
@@ -25,11 +25,12 @@ const Login = () => {
         throw new Error(res.statusText);
       }
       const json = await res.json();
+      //set the json response
       setData(json);
       setError(null);
-      localStorage.setItem('token', json.token);
-      refetch();
-      navigate("/")
+      localStorage.setItem('token', json.token); // add token to session
+      refetch(); // fetch the user data and save it in the context API
+      navigate("/") // go to main page
     } catch (err) {
       if (err.message == 'Unauthorized') {
         setError('Incorrect Username or Password');

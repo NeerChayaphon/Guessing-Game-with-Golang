@@ -5,43 +5,48 @@ import useTokenCheck from '../hooks/useTokenCheck';
 import {useNavigate} from 'react-router-dom';
 import WinModal from '../components/WinModal';
 
+// The main page of the guessing game
 const Home = () => {
-  useTokenCheck();
-  useFetchUser();
+  useTokenCheck(); // token check
+  useFetchUser(); // user information checking or fetching
   const navigate = useNavigate();
-  const {playerName} = useContext(UserContext);
+  const {playerName} = useContext(UserContext); // player's name from context API
 
-  const [guessNumber, setGuessNumber] = useState(null);
+  const [guessNumber, setGuessNumber] = useState(null); // number that user guess
   const [result, setResult] = useState({
     message: '',
     status: false,
   });
-  const [min, setMin] = useState(1);
-  const [max, setMax] = useState(100);
-  const [count, setCount] = useState(0);
+  const [min, setMin] = useState(1); // min value
+  const [max, setMax] = useState(100); // max value
+  const [count, setCount] = useState(0); // count of guess
 
+  // Function for submiting number and getting the result
   const HandleSubmit = async (e) => {
     e.preventDefault();
+    // validate user input
     if (isNumeric(guessNumber)) {
-      setCount(count + 1);
+      setCount(count + 1); // count the number of guess
       const url = `http://localhost:8080/guess?guessNumber=${guessNumber}`;
       const requestOptions = {
         method: 'GET',
         headers: {Authorization: 'Bearer ' + localStorage.getItem('token')},
       };
       try {
-        const res = await fetch(url, requestOptions);
+        const res = await fetch(url, requestOptions); // fetch data
         if (!res.ok) {
           throw new Error(res.statusText);
         }
         const json = await res.json();
+        // set the result
         setResult({
           message: json.message,
           status: json.status,
         });
 
-        updateRange(json.message, guessNumber);
+        updateRange(json.message, guessNumber); // update the range of the answer for hint
       } catch (err) {
+        // if user is Unauthorized, then back to login page
         if (err.message == 'Unauthorized') {
           navigate('/login');
         } else {
@@ -59,10 +64,12 @@ const Home = () => {
     }
   };
 
+  // validate user input
   const isNumeric = (guessNumber) => {
     return /^-?\d+$/.test(guessNumber);
   };
 
+  // change the range of the answer
   const updateRange = (message, guessNumber) => {
     const guessInt = parseInt(guessNumber);
     if (message.includes('low')) {
@@ -76,6 +83,7 @@ const Home = () => {
     }
   };
 
+  // restart game
   const reset = () => {
     setMin(1);
     setMax(100);
@@ -87,6 +95,7 @@ const Home = () => {
     setGuessNumber(null);
   };
 
+  // if the user guess the correct number
   if (result.status) {
     return <WinModal data={{playerName, guessNumber, count, reset}} />;
   } else {

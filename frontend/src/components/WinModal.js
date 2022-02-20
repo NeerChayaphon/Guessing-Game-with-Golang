@@ -1,6 +1,7 @@
 import React from 'react';
 import {useNavigate} from 'react-router-dom';
 
+// Pop up in the home page after the user has guessed the answer
 const WinModal = (props) => {
   const navigate = useNavigate();
   const quitGame = () => {
