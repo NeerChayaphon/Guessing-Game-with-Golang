@@ -18,8 +18,7 @@
 2. Login page http://localhost:3000/login
 
 ** NOTE
-** If user access the Guessing page without login to the website,
-** the website will automatically redirect back to the login page.
+** If user access the Guessing page without login to the website, the website will automatically redirect back to the login page.
 
 ## Backend Route
 1. Login Route (POST): http://localhost:8080/login 
@@ -28,6 +27,5 @@
 4. Show answer (GET): http://localhost:8080/showAnswer (Use only in development process for testing)
 
 ** NOTE
-** (2,3,4) Route need to have JWT token as a header field name Authorization, for example
-** Authorization : Bearer ..Your token..
+** (2,3,4) Route need to have JWT token as a header field name Authorization, for example Authorization : Bearer ..Your token..
 
