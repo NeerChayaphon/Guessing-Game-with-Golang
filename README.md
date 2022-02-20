@@ -37,7 +37,7 @@ $ docker compose down
 
 ## Backend Route
 1. Login Route (POST): http://localhost:8080/login 
-2. Guessing Route (GET): http://localhost:8080/guess?guessNumber=**Your number** 
+2. Guessing Route (GET): http://localhost:8080/guess?guessNumber= **Your number** 
 3. Token authentication check (GET): http://localhost:8080/authCheck
 4. Show answer (GET): http://localhost:8080/showAnswer (Use only in development process for testing)
 
